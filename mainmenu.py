@@ -118,6 +118,7 @@ class mainmenu(QWidget):
         self.exit_btn.setText("Exit")
         self.exit_btn.resize(200,100)
         self.exit_btn.move(652,580)
+        self.exit_btn.clicked.connect(self.exit_menu)
 
         self.helplink_lbl.setText("Help")
         self.helplink_lbl.setFixedWidth(100)
@@ -187,7 +188,7 @@ class mainmenu(QWidget):
     @pyqtSlot()
     def openWaitlist_menu(self):
         if self.waitlistscren == "yes":
-            mainmenu.openWaitlist_menu()
+            #mainmenu.openWaitlist_menu()
             self.waitlistWindow = waitlist()
             self.waitlistWindow.show()
         else:
@@ -224,6 +225,10 @@ class mainmenu(QWidget):
             QMessageBox.warning(self, 'Error', 'Access Denied!!!.')
             self.systemWindow.close()
         print("clicked system button")
+    @pyqtSlot()
+    def exit_menu(self):
+        print("Exit button clicked")
+        self.close()
 
     #start program
 if __name__=='__main__':
